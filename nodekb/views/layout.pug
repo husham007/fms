@@ -1,0 +1,52 @@
+doctype html
+html
+  head
+    title College Education File System
+    link(rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css')
+    link(rel='stylesheet' href='/css/stylesheet.css')
+  body
+    nav.navbar.navbar-inverse
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='/') College Education File System [Test Phase]
+        #navbar.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            if user
+              if user.usertype==0
+                li
+                  a(href='/articles/add') Add File  
+          ul.nav.navbar-nav.navbar-right
+            if user
+              if user.usertype == 0
+                li
+                  a(href='/users/logout') Logout
+              if user.usertype==1
+                li
+                  a(href='/users/user_logout') Logout
+            if !user
+              li
+                a(href='/users/user_register') User Register
+              li
+                a(href='/users/register') Admin Register 
+              li
+                a(href='/users/login') Admin Login
+              li
+                a(href='/users/user_login') User Login              
+    .container
+      != messages('message', locals)
+      if errors
+        each error, i in errors
+          div(class="alert alert-danger") #{error.msg}
+      block content
+      br
+      hr
+      footer
+        p Copyright &copy; 2018
+    script(src='/bower_components/jquery/dist/jquery.js')
+    script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
+    script(src='/js/main.js')

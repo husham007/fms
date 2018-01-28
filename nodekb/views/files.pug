@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1 File Numbers
+  ul.list-group
+    each article, i in articles
+      li.list-group-item
+        if user.usertype==1
+          if article.filename == user.name
+            a(href="/articles/"+article._id)= article.file + " "+article.status
+        if user.usertype==0
+          a(href="/articles/"+article._id)= article.file + " "+article.status

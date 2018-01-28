@@ -1,0 +1,39 @@
+extends layout
+
+block content
+  h1 #{title}
+  form(method='POST', action='/articles/edit/'+article._id)
+    #form-group
+      label Receiving:
+      input.form-control(name='receiving', type='text', value=article.receiving)
+    #form-group
+      label Department:
+      input.form-control(name='department', type='text', value=article.department)
+    #form-group
+      label Department Type:
+      input.form-control(name='deptype', type='text', value=article.deptype)
+    #form-group
+      label Organization:
+      input.form-control(name='organization', type='text', value=article.organization)
+    #form-group
+      label Organization Type:
+      input.form-control(name='orgtype', type='text', value=article.orgtype)
+    #form-group
+      label File#:
+      input.form-control(name='file', type='text', value=article.file)
+    #form-group
+      label Date#:
+      input.form-control(name='date', type='text', value=article.date)
+    #form-group
+      label Subject:
+      input.form-control(name='subject', type='text', value=article.subject)
+    #form-group
+      label File Name:
+      input.form-control(name='filename', type='text', value=article.filename)
+    #form-group
+      label Status:
+      input.form-control(name='status', type='text', value=article.status)
+    
+    
+    br
+    input.btn.btn-primary(type='submit', value='Submit')

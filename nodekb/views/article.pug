@@ -1,0 +1,62 @@
+extends layout
+
+block content
+  h1=article.title
+  h5 Created by #{author}
+  table
+    thead
+      tr
+        th File Particulars
+        th &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        th Details
+    tbody
+      tr
+        td Internal Receiving
+        td
+        td=article.receiving
+      tr
+        td Department
+        td
+        td=article.department
+      tr
+        td Department-Type
+        td
+        td=article.deptype
+      tr
+        td Organization
+        td
+        td=article.organization
+      tr 
+        td Organization-Type
+        td
+        td=article.orgtype
+      tr
+        td File #
+        td
+        td=article.file
+      tr
+        td Date
+        td
+        td=article.date
+      tr
+        td Subject
+        td
+        td=article.subject
+      tr
+        td File Name
+        td
+        td=article.filename
+      tr
+        td Status
+        td
+        td=article.status
+      
+        
+        
+  //-p=article.body
+  hr
+  if user
+    if user.id == article.author 
+      a.btn.btn-default(href='/articles/edit/'+article._id) Edit
+      a.btn.btn-default(href='/articles/update/'+article._id) Update Status
+      a.btn.btn-danger.delete-article(href='#',data-id=article._id) Delete
